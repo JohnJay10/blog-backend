@@ -4,7 +4,7 @@ const User = require('../models/User');
 //Genete JWT
 const generateToken = (user) => {
     return jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: '1h',
+        expiresIn: '7d',
     });
 };
 
@@ -75,6 +75,7 @@ exports.getme = async (req, res) => {
                 id: user._id,
                 username: user.username,
                 email: user.email,
+                role: user.role,
             },
         });
     } catch (error) {
